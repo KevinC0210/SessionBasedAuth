@@ -4,7 +4,7 @@
   "description": "Sessionbasierte Authentifizierung für das Streuobstwiesen-Portal",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -17,8 +17,16 @@
   },
   "homepage": "https://github.com/KevinC0210/SessionBasedAuth#readme",
   "dependencies": {
+    "body-parser": "^1.19.1",
     "cookie-parser": "^1.4.6",
     "express": "^4.17.1",
-    "express-session": "^1.17.2"
+    "express-session": "^1.17.2",
+    "jest": "^27.4.5",
+    "mocha": "^9.1.3",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "supertest": "^6.1.6",
+    "supertest-session": "^4.1.0"
   }
 }
