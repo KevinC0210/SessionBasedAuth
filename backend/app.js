@@ -17,14 +17,15 @@ app.use(
   session({
     secret: sessionSecret,
     saveUninitialized: true,
-    cookie: { maxAge: oneDayInMilliseconds },
+    cookie: { secure: false, maxAge: oneDayInMilliseconds },
     resave: false,
   })
 );
 
 const corsOptions = {
-  origin: "http://localhost:8080",
+  origin: "http://localhost:4200",
   optionsSuccessStatus: 200,
+  credentials: true,
 };
 
 app.use(cors(corsOptions));
@@ -36,7 +37,7 @@ app.use(express.static(__dirname));
 
 app.use(cookieParser());
 
-app.use(router);
+app.use("/api", router);
 
 app.listen(port, () => {
   console.log("Es funktioniert bis hier");
