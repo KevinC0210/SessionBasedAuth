@@ -13,11 +13,9 @@ export class RestrictedComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.hasAccessToRestrictedContent = false;
     this.http
       .get('http://localhost:3030/api/restricted', { withCredentials: true })
       .subscribe((data: any) => {
-        this.hasAccessToRestrictedContent = data.authenticated;
         this.userid = data.userid;
       });
   }

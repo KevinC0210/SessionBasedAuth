@@ -4,7 +4,7 @@ var myApp = require("../app");
 var testSession = null;
 
 beforeEach(() => {
-  testSession = session("http://localhost:3030");
+  testSession = session("http://localhost:3030/api");
 });
 
 describe("without being logged in", () => {
@@ -13,27 +13,27 @@ describe("without being logged in", () => {
   });
 
   it("should fail accessing the restricted page", (done) => {
-    testSession.get("/restricted").expect(401).end(done);
+    testSession.get("/restricted").expect(403).end(done);
   });
 
   it("should fail accessing the admin page", (done) => {
-    testSession.get("/admin").expect(401).end(done);
+    testSession.get("/admin").expect(403).end(done);
   });
 
   it("should log in as user", (done) => {
     testSession
       .post("/login")
       .send({ userid: "user", password: "userpassword" })
-      .expect(200)
-      .end(done);
+      .expect(200);
+    testSession.get("/logout").expect(200).end(done);
   });
 
   it("should log in as admin", (done) => {
     testSession
       .post("/login")
       .send({ userid: "admin", password: "adminpassword" })
-      .expect(200)
-      .end(done);
+      .expect(200);
+    testSession.get("/logout").expect(200).end(done);
   });
 });
 
@@ -61,7 +61,7 @@ describe("being logged in as a user", () => {
   });
 
   it("should fail accessing the admin page", (done) => {
-    userSession.get("/admin").expect(401).end(done);
+    userSession.get("/admin").expect(403).end(done);
   });
 
   it("should log out", (done) => {

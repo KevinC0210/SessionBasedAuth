@@ -7,16 +7,13 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./admin.component.css'],
 })
 export class AdminComponent implements OnInit {
-  hasAccessToAdminContent = false;
-
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.hasAccessToAdminContent = false;
     this.http
       .get('http://localhost:3030/api/admin', { withCredentials: true })
       .subscribe((data: any) => {
-        this.hasAccessToAdminContent = data.authenticated;
+        console.log('I am the admin: ' + data.authorized);
       });
   }
 }

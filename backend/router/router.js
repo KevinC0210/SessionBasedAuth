@@ -12,26 +12,22 @@ router.get("/", (req, res) => {
 router.get("/restricted", (req, res) => {
   console.log(req.session);
   if (authentificationCheck.checkAuthenticatedUser(req)) {
-    res.status(200).json({ authenticated: true, userid: req.session.userid });
+    res.status(200).json({ authorized: true, userid: req.session.userid });
   } else {
-    res.status(401).json({ authenticated: false });
+    res.status(403).json({ authorized: false });
   }
 });
 
 router.get("/admin", (req, res) => {
   if (authentificationCheck.checkAuthenticatedAdmin(req)) {
-    res.status(200).json({ authenticated: true });
+    res.status(200).json({ authorized: true });
   } else {
-    res.status(401).json({ authenticated: false });
+    res.status(403).json({ authorized: false });
   }
 });
 
 router.get("/login", (req, res) => {
-  if (authentificationCheck.checkAuthenticatedUser(req)) {
-    res.status(200).json({ userid: req.session.userid, loggedIn: true });
-  } else {
-    res.status(200).json({ loggedIn: false });
-  }
+  res.status(200).json({ session: req.session });
 });
 
 router.post("/login", (req, res) => {
