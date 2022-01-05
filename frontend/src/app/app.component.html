@@ -1,3 +1,10 @@
-<div>
+<div class="app">
+  <nav>
+    <a [routerLink]="['/']">Home</a>
+    <a [routerLink]="['/restricted']">Restricted</a>
+    <a [routerLink]="['/admin']">Admin</a>
+    <a [routerLink]="['/login']" *ngIf="!authService.getUser()">Login</a>
+    <a [routerLink]="['/logout']" *ngIf="authService.getUser()">Logout</a>
+  </nav>
   <router-outlet></router-outlet>
 </div>

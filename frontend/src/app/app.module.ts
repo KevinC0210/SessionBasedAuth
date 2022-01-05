@@ -5,11 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { AdminComponent } from './admin/admin.component';
-import { RestrictedComponent } from './restricted/restricted.component';
-import { LoginComponent } from './login/login.component';
-import { PublicComponent } from './public/public.component';
-import { LogoutComponent } from './logout/logout.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { RestrictedComponent } from './components/restricted/restricted.component';
+import { LoginComponent } from './components/login/login.component';
+import { PublicComponent } from './components/public/public.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 @NgModule({
   declarations: [

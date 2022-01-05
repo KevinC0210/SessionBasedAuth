@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminComponent } from './admin/admin.component';
+import { AdminComponent } from './components/admin/admin.component';
 import { AdminCanActivate } from './auth/AdminCanActivate';
 import { UserCanActivate } from './auth/UserCanActivate';
-import { LoginComponent } from './login/login.component';
-import { LogoutComponent } from './logout/logout.component';
-import { PublicComponent } from './public/public.component';
-import { RestrictedComponent } from './restricted/restricted.component';
+import { LoginComponent } from './components/login/login.component';
+import { LogoutComponent } from './components/logout/logout.component';
+import { PublicComponent } from './components/public/public.component';
+import { RestrictedComponent } from './components/restricted/restricted.component';
 
 const routes: Routes = [
   {

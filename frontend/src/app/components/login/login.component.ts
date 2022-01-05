@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +13,7 @@ export class LoginComponent implements OnInit {
     password: new FormControl('', [Validators.required]),
   });
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {}
 
@@ -29,15 +28,7 @@ export class LoginComponent implements OnInit {
         },
         this.loginForm.value
       );
-      this.http
-        .post('http://localhost:3030/api/login', data, {
-          withCredentials: true,
-        })
-        .subscribe((data: any) => {
-          if (data.userid) {
-            this.router.navigate(['/']);
-          }
-        });
+      this.authService.login(data);
     }
   }
 }

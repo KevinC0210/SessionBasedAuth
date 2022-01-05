@@ -1,22 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import {
   ActivatedRouteSnapshot,
   CanActivate,
   RouterStateSnapshot,
 } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Injectable()
 export class AdminCanActivate implements CanActivate {
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   async canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    const data: any = await this.http
-      .get('http://localhost:3030/api/login', { withCredentials: true })
-      .toPromise();
-
-    if (data.session.admin) {
+    if (await this.authService.isAuthorizedAsAdmin()) {
       return true;
     } else {
       this.router.navigate(['/']);

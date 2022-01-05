@@ -38,7 +38,7 @@ router.post("/login", (req, res) => {
     var currentSession = req.session;
     currentSession.userid = user.id;
     currentSession.admin = user.admin;
-    return res.status(200).json({ userid: req.session.userid });
+    return res.status(200).json({ session: req.session });
   } else {
     res.status(401);
   }
