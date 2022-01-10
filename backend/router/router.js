@@ -1,7 +1,7 @@
 const express = require("express");
 const path = require("path");
 const users = require("../database");
-const authentificationCheck = require("../authentification_check");
+const authenticationCheck = require("../authentication_check");
 
 var router = express.Router();
 
@@ -10,7 +10,7 @@ router.get("/", (req, res) => {
 });
 
 router.get("/restricted", (req, res) => {
-  if (authentificationCheck.checkAuthenticatedUser(req)) {
+  if (authenticationCheck.checkAuthenticatedUser(req)) {
     res.status(200).json({ authorized: true, userid: req.session.userid });
   } else {
     res.status(403).json({ authorized: false });
@@ -18,7 +18,7 @@ router.get("/restricted", (req, res) => {
 });
 
 router.get("/admin", (req, res) => {
-  if (authentificationCheck.checkAuthenticatedAdmin(req)) {
+  if (authenticationCheck.checkAuthenticatedAdmin(req)) {
     res.status(200).json({ authorized: true });
   } else {
     res.status(403).json({ authorized: false });
