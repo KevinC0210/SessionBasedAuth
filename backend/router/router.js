@@ -10,7 +10,6 @@ router.get("/", (req, res) => {
 });
 
 router.get("/restricted", (req, res) => {
-  console.log(req.session);
   if (authentificationCheck.checkAuthenticatedUser(req)) {
     res.status(200).json({ authorized: true, userid: req.session.userid });
   } else {
