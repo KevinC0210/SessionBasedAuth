@@ -6,6 +6,9 @@ Prototyp zur sessionbasierten Authentifizierung für das Streuobstwiesen-Portal 
 
 Um die Anwendung zu starten müssen zunächst alle Dependencies installiert werden. Führe hierfür den Befehl `npm install` sowohl im Ordner _backend_ als auch im Ordner _frontend_ aus.
 
+Beachte außerdem, dass du die Angular CLI installiert hast. Sollte dies nicht der Fall sein, installiere sie mit folgendem Befehl: <br />
+`npm install -g @angular/cli`
+
 ## Anwendung starten
 
 Um die Anwendung zu starten, öffne zwei Terminals. Zum Starten des Backends führe in einem Terminal folgende Befehle aus: <br />
